@@ -14,8 +14,10 @@
     <body>
         <h1>Forgot Password</h1>
         <p>Please enter your email address to retrieve your password </p>
-        Email Address <input type="text" name="email">
+        Email Address <input type="text" name="forgotEmail">
+        <br>
         <input type="submit" value="Submit">
+        ${error}
 
     </body>
 </html>

@@ -21,33 +21,8 @@ import javax.naming.NamingException;
 
 public class GmailService {
     
-    public static boolean forgotPassword(String email, String path, String template, HashMap<String, String> tags){
-        try {
-            // read in template in to a string
-            BufferedReader br = new BufferedReader(new FileReader(new File(template)));
-            String line = br.readLine();
-            String body = "";
-            while(line != null) {
-                body += line;
-                line = br.readLine();
-            }
-            
-            // replace all {{ }} tags with values
-            for(String tag : tags.keySet()) {
-                body = body.replace("{{" + tag + "}}", tags.get(tag));
-            }
-            
-            // send email
-            forgotPassword(email, path, body, true);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(GmailService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
     
-    public static void sendMail(String email, String subject,
-            String template, HashMap<String, String> tags) {
+     public static void sendMail(String email, String subject, String template, HashMap<String, String> tags) {
         try {
             // read in template in to a string
             BufferedReader br = new BufferedReader(new FileReader(new File(template)));
@@ -58,7 +33,7 @@ public class GmailService {
                 line = br.readLine();
             }
             
-            // replace all heart tags with values
+            // replace all % tags with values
             for(String tag : tags.keySet()) {
                 body = body.replace("%" + tag + "%", tags.get(tag));
             }
